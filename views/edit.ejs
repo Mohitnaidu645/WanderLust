@@ -1,0 +1,28 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="ed-page">
+        <form method="post" action="/listupd/<%= List._id %>?_method=put">
+              <p>
+                 Title : 
+                 <textarea name="title"><%= List.title %></textarea>
+              </p>
+            <p>
+                Description : 
+                <textarea name="description"><%= List.description %></textarea>
+            </p> 
+            <p>
+                Price: 
+                <textarea name="price"><%= List.price %></textarea>
+            </p>
+            <p
+            >Location :
+             <textarea name="location"><%= List.location %></textarea>
+            </p>
+           <p>
+             Country : 
+             <textarea name="country"><%= List.country %></textarea>
+            </p>
+           <button>Edit List</button>
+        </form>
+    </div>
+</body>

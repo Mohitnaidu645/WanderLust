@@ -1,0 +1,43 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2">
+        <form method="post" action="/newlist">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" placeholder="title" name="title" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="description" class="form-control"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <textarea name="image" placeholder="url/Link" class="form-control"></textarea>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-4">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" placeholder="Price" name="price" class="form-control">
+            </div>
+            <div class="mb-3 col-8">
+                <label for="country" class="form-label">Country</label>
+                <input type="text" placeholder="country" name="country" class="form-control">
+            </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="loaction" class="form-label">Location</label>
+                <input type="text" placeholder="Location" name="location" class="form-control">
+            </div>
+            
+            <br>
+           <button class="btn btn-dark">Creat List</button>
+        </form>
+        </div>
+    </div>
+</body>
+
+
+
+

@@ -1,0 +1,9 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+    <h3>ListId <%= list._id %></h3>
+    <h2>Title :-<%= list.title %></h2>
+    <h4>Description :-<%= list.description %></h4>
+    <h4>Price:-₹<%= list.price.toLocaleString("en-IN") %></h4>
+    <h4>Location :-<%= list.location %></h4>
+    <h4>Country :-<%= list.country %></h4>
+</body>
