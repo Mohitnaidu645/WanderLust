@@ -1,28 +1,62 @@
-<% layout("/layouts/boilerplate") %>
+<% layout('/layouts/boilerplate') %>
+
 <body>
-    <div class="ed-page">
-        <form method="post" action="/listupd/<%= List._id %>?_method=put">
-              <p>
-                 Title : 
-                 <textarea name="title"><%= List.title %></textarea>
-              </p>
-            <p>
-                Description : 
-                <textarea name="description"><%= List.description %></textarea>
-            </p> 
-            <p>
-                Price: 
-                <textarea name="price"><%= List.price %></textarea>
-            </p>
-            <p
-            >Location :
-             <textarea name="location"><%= List.location %></textarea>
-            </p>
-           <p>
-             Country : 
-             <textarea name="country"><%= List.country %></textarea>
-            </p>
-           <button>Edit List</button>
-        </form>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form method="POST" action="/listings/listupd/<%= List._id %>?_method=PUT" class="needs-validation" novalidate>
+                
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <textarea name="listing[title]" class="form-control" required><%= List.title %></textarea>
+                    <div class="invalid-feedback">
+                         Title should be valid
+                </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <textarea name="listing[description]" class="form-control" required><%= List.description %></textarea>
+                     <div class="invalid-feedback">
+                         Description should be valid
+                </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Image</label>
+                    <textarea name="listing[image][url]" class="form-control"><%= List.image.url %></textarea>
+                     <div class="valid-feedback">
+                          ok!
+                </div>
+                </div>
+                
+                <div class="row">
+                    <div class="mb-3 col-4">
+                        <label class="form-label">Price</label>
+                        <textarea name="listing[price]" class="form-control" required><%= List.price %></textarea>
+                         <div class="invalid-feedback">
+                         Price should be valid
+                        </div>
+                    </div>
+                    <div class="mb-3 col-8">
+                        <label class="form-label">Country</label>
+                        <textarea name="listing[country]" class="form-control" required><%= List.country %></textarea>
+                          <div class="invalid-feedback">
+                         Country should be valid
+                         </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Location</label>
+                    <textarea name="listing[location]" class="form-control" required><%= List.location %></textarea>
+                     <div class="invalid-feedback">
+                         Location should be valid
+                    </div>
+                </div>
+                
+                <button class="btn btn-dark mb-2">Edit</button>
+            </form>
+        </div>
     </div>
+    <script src="/js/script.js"></script>
 </body>

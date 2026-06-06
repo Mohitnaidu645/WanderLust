@@ -1,66 +1,295 @@
+/* =========================
+   GLOBAL STYLES
+========================= */
+
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    background: linear-gradient(
+        135deg,
+        #ede0e0,
+        #ff6b6b
+    );
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.navbar{
-    height:5rem;
-    background-color: rgb(253, 253, 253);
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    height: 5rem;
+    background-color: #ffffff;
+    padding: 0 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 2rem;
 }
-.fa-compass{
+
+.fa-compass {
     color: crimson;
     font-size: 2rem;
 }
-.navbar-collapse{
-    color: #22222222 !important;
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
 }
-.f-info-links a{
+
+.nav-link {
+    color: #222 !important;
+    font-weight: 500;
+    margin-left: 0.8rem;
+    transition: 0.2s ease;
+}
+
+.nav-link:hover {
+    color: crimson !important;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.f-info {
+    text-align: center;
+    min-height: 8rem;
+    background-color: white;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+.f-info-links,
+.f-info-social,
+.f-info-brand {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-info-links a {
     text-decoration: none;
-    color: #222222 ;
+    color: #444;
+    margin: 0 0.8rem;
+    transition: 0.2s ease;
 }
-.f-info-links a:hover{
+
+.f-info-links a:hover {
+    color: crimson;
     text-decoration: underline;
 }
 
-.f-info-links,.f-info-social,.f-info-brand{
-    width: 100%;
-    font-size: 1rem;
-     display: flex;
-     vertical-align: right;
-     justify-content: center;
-     align-items: center;
-    }
-.f-info{
-    text-align: center;
-    height: 8rem;
-    background-color: #ebebeb;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: space-evenly;
-    justify-content: center;
-}
-.f-info-social i{
-    font-size: 1rem;
+.f-info-social i {
+    font-size: 1.2rem;
     margin-right: 1rem;
+    color: #444;
+    transition: 0.3s ease;
 }
-.card{
+
+.f-info-social i:hover {
+    color: crimson;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   CARD STYLING
+========================= */
+
+.card {
     border: none !important;
+    border-radius: 1.2rem !important;
+    overflow: hidden;
     margin-bottom: 2rem;
+    background-color: white;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
 }
-.card-img-top{
-    border-radius: 1rem;
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+}
+
+.card-img-top {
+    border-radius: 1.2rem 1.2rem 0 0;
     width: 100% !important;
+    height: 18rem;
     object-fit: cover !important;
+    transition: 0.4s ease;
 }
-.card-body{
-    padding: 0% !important;
+
+.card:hover .card-img-top {
+    transform: scale(1.03);
 }
-.card-text p{
-    font-weight: 400 !important;
+
+.card-body {
+    padding: 1rem !important;
 }
-.listing-link{
+
+.card-text {
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.card-text p {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* =========================
+   LISTING LINK
+========================= */
+
+.listing-link {
     text-decoration: none;
+    color: inherit;
 }
-.card-img-overlay:hover{
-    opacity: 0.2;
-    background-color: rgb(253, 254, 255);
+
+/* =========================
+   IMAGE OVERLAY
+========================= */
+
+.card-img-overlay {
+    opacity: 0;
+    transition: 0.3s ease;
+    background: rgba(255,255,255,0.15);
+}
+
+.card:hover .card-img-overlay {
+    opacity: 1;
+}
+
+/* =========================
+   SHOW PAGE
+========================= */
+
+.show-card {
+    border: none;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.show-img {
+    height: 50vh;
+    width: 100%;
+    object-fit: cover !important;
+    transition: 0.4s ease;
+}
+
+.show-img:hover {
+    transform: scale(1.02);
+}
+
+.show-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.show-info {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn {
+    border-radius: 0.8rem !important;
+    padding: 0.7rem 1.4rem !important;
+    font-weight: 600 !important;
+    transition: 0.3s ease !important;
+}
+
+.btn-dark:hover {
+    transform: translateY(-2px);
+}
+
+.btn-edit {
+    background: #111827 !important;
+    border: none !important;
+    color: white !important;
+}
+
+.btn-edit:hover {
+    background: #000 !important;
+    transform: translateY(-2px);
+}
+
+.btn-del {
+    background: #ef4444 !important;
+    border: none !important;
+    color: white !important;
+}
+
+.btn-del:hover {
+    background: #dc2626 !important;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   FORMS
+========================= */
+
+.form-control,
+textarea {
+    border-radius: 0.8rem !important;
+    padding: 0.8rem !important;
+    border: 1px solid #d1d5db !important;
+    box-shadow: none !important;
+}
+
+.form-control:focus,
+textarea:focus {
+    border-color: crimson !important;
+    box-shadow: 0 0 0 0.15rem rgba(220,20,60,0.15) !important;
+}
+
+/* =========================
+   ALERTS
+========================= */
+
+.alert {
+    border-radius: 1rem !important;
+    font-weight: 500;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 0 1rem;
+    }
+
+    .card-img-top {
+        height: 14rem;
+    }
+
+    .show-img {
+        height: 35vh;
+    }
+
+    .btns {
+        flex-direction: column;
+    }
 }
