@@ -5,11 +5,13 @@ import Joi from "joi";
         title:Joi.string().required(),
         description:Joi.string().required(),
        image:Joi.object({
-       url:Joi.string().allow("", null)
+       url:Joi.string(),
+       filename:Joi.string(),
        }),
         price:Joi.number().required().min(0),
         location:Joi.string().required(),
         country:Joi.string().required(),
+        category:Joi.string().required(),
      }).required()
 })
 

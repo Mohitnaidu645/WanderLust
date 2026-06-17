@@ -1,25 +1,86 @@
-<nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
+<nav class="navbar navbar-expand-lg border-bottom sticky-top bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa-solid fa-compass"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" >
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="/listings">
+      <i class="fa-solid fa-compass"></i>
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+      <!-- Left Side -->
+      <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link"  href="/listings">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/listings">All Listings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/listings/new">Add Listing</a>
+          <a class="nav-link fw-semibold" href="/listings">
+            Explore
+          </a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
+
+      <!-- Search Bar -->
+      <form class="d-flex search-form mx-auto align-items-center" role="search">
+        <input
+          class="form-control search-input"
+          type="search"
+          placeholder="Search destinations"
+        />
+        <button class="btn search-btn ms-2 d-flex align-items-center" type="submit">
+          <i class="fa-solid fa-magnifying-glass me-1"></i>
+          <span>Search</span>
+        </button>
       </form>
+
+      <!-- Right Side -->
+      <ul class="navbar-nav ms-auto align-items-center">
+
+        <li class="nav-item">
+          <a class="nav-link fw-semibold" href="/listings/new">
+            Airbnb your home
+          </a>
+        </li>
+
+        <% if (!currUser) { %>
+          <li class="nav-item ms-2">
+            <a href="/login" class="btn btn-outline-dark rounded-pill">
+              Log In
+            </a>
+          </li>
+
+          <li class="nav-item ms-2">
+            <a href="/signup" class="btn btn-danger rounded-pill">
+              Sign Up
+            </a>
+          </li>
+        <% } %>
+
+        <% if (currUser) { %>
+          <li class="nav-item ms-3">
+            <span class="fw-semibold">
+              Hi, <%= currUser.username %>
+            </span>
+          </li>
+
+          <li class="nav-item ms-2">
+            <a href="/logout" class="btn btn-outline-danger rounded-pill">
+              Log Out
+            </a>
+          </li>
+        <% } %>
+
+      </ul>
+
     </div>
   </div>
 </nav>

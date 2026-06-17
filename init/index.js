@@ -19,7 +19,10 @@ const connectDB = async () => {
 await connectDB();
 
 const initDb=async ()=>{
+  initData.data= initData.data.map((obj)=>({...obj,owner:"6a26ef788fff2d96abd49cca"}));
     await Listing.insertMany(initData.data);
+    console.log("data initialized");
+
 };
 
 initDb();

@@ -1,0 +1,78 @@
+/* =====================
+   MODERN STAR RATING
+===================== */
+
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 2rem;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: 0.2s ease;
+    margin-right: 5px;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #fbbf24;
+}
+
+.star-rating input:checked ~ label {
+    color: #f59e0b;
+}
+
+/* =====================
+   REVIEW CARDS
+===================== */
+
+.review-card {
+    border: none !important;
+    border-radius: 1rem !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    transition: .3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-4px);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.review-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: crimson;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.review-user {
+    font-weight: 700;
+    color: #111827;
+}
+
+.review-stars {
+    color: #f59e0b;
+    font-size: 1rem;
+}
+
+.review-comment {
+    color: #4b5563;
+    line-height: 1.7;
+}

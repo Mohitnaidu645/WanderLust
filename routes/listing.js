@@ -1,76 +1,33 @@
 import express from "express";
 const router=express.Router();
-import Listing from "../models/listing.js"
-import {listingSchema} from "../schema.js";
+
 import wrapAsync from "../utils/wrapAsync.js";
-import ExpressError from "../utils/ExpressError.js";
+import {isLoggedin,validateListing,isOwner} from "../middleware.js";
+import * as listingController from "../controllers/listings.js";
+import multer from "multer";
+import { storage } from "../cloudConfig.js";
+const upload=multer({storage});
 
-const validateListing=(req,res,next)=>{
-  let {error}=listingSchema.validate(req.body);
-   if(error){
-    let errmsg=error.details.map((el)=>el.message).join(",");
-    throw new ExpressError(400,errmsg);
-   }else{
-    next();
-   }
-};
+//indexRoute
+router.get("/", wrapAsync(listingController.index));
 
-//index route
-router.get("/",wrapAsync(async (req,res)=>{
-  const allListings=await Listing.find({});
-  res.render("index.ejs",{allListings});
-}));
-
-
-//new 
-router.get("/new",(req,res)=>{
-  res.render("new.ejs");
+//createRoute 
+router.get("/new",isLoggedin,(req,res)=>{
+  res.render("./listings/new.ejs");
 });
-
-router.post("/newlist",validateListing,wrapAsync(
-  async(req,res)=>{
-    const newList = new Listing(req.body.listing);    
-    await newList.save(); 
-    res.redirect("/listings");
- }
-));
+router.post("/newlist",isLoggedin,upload.single('image'),validateListing,wrapAsync(listingController.createOne));
 
 //show route
-router.get("/:id",wrapAsync(async(req,res)=>{
-  let {id}=req.params;
-  const list=await Listing.findById(id).populate("reviews");
-  res.render("show.ejs",{list});
-}));
+router.get("/category/:category", wrapAsync(listingController.ctgRecg));
+router.get("/:id", wrapAsync(listingController.showRoute));
 
 
 //update
-router.get("/listup/:id",wrapAsync(async(req,res)=>{
-  let {id}=req.params;
-  let List= await Listing.findById(id);
-    res.render("edit.ejs",{List});
-}));
-router.put("/listupd/:id",validateListing, wrapAsync(async (req, res) => {
-
-   let { id } = req.params;
-    const newList =  await Listing.findByIdAndUpdate(
-      id,
-      req.body.listing,
-      {
-         runValidators: true,
-         new: true
-      }
-   );
-
-   res.redirect(`/listings/${id}`);
-
-}));
+router.get("/listup/:id",isLoggedin,isOwner,wrapAsync(listingController.updateRender));
+router.put("/listupd/:id",validateListing,upload.single('image'),isOwner, wrapAsync(listingController.updateOne));
 
 
 //delete
-router.delete("/list/del/:id",wrapAsync(async(req,res)=>{
-    let {id}=req.params;
-    let del=await Listing.findByIdAndDelete(id);
-    res.redirect("/listings");
-}));
+router.delete("/list/del/:id",isLoggedin,isOwner,wrapAsync(listingController.deleteOne));
 
 export default router;

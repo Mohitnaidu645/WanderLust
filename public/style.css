@@ -7,7 +7,7 @@ body {
     background: linear-gradient(
         135deg,
         #ede0e0,
-        #ff6b6b
+        #ffa16b
     );
     color: #222;
     min-height: 100vh;
@@ -28,7 +28,7 @@ body {
 }
 
 .fa-compass {
-    color: crimson;
+    color: rgb(220, 90, 20);
     font-size: 2rem;
 }
 
@@ -46,7 +46,7 @@ body {
 }
 
 .nav-link:hover {
-    color: crimson !important;
+    color: rgb(220, 100, 20) !important;
 }
 
 /* =========================
@@ -83,7 +83,7 @@ body {
 }
 
 .f-info-links a:hover {
-    color: crimson;
+    color: rgb(220, 97, 20);
     text-decoration: underline;
 }
 
@@ -95,7 +95,7 @@ body {
 }
 
 .f-info-social i:hover {
-    color: crimson;
+    color: rgb(220, 103, 20);
     transform: translateY(-2px);
 }
 
@@ -234,13 +234,13 @@ body {
 }
 
 .btn-del {
-    background: #ef4444 !important;
+    background: #ef7d44 !important;
     border: none !important;
     color: white !important;
 }
 
 .btn-del:hover {
-    background: #dc2626 !important;
+    background: #ee7f30 !important;
     transform: translateY(-2px);
 }
 
@@ -292,4 +292,97 @@ textarea:focus {
     .btns {
         flex-direction: column;
     }
+}
+main {
+    flex: 1;
+}
+/* Filters Bar */
+#filter{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+#filter::-webkit-scrollbar{
+    display: none;
+}
+
+.filters{
+    text-decoration: none !important;
+    min-width: 80px;
+     color: #222 !important;
+    text-align: center;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.filters i{
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+}
+
+.filters p{
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+.filters:hover{
+    opacity: 1;
+    transform: translateY(-3px);
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+}
+.tax-info{
+    display:none;
+}
+.tax-toggle{
+    margin-left: 15.6rem;
+    border: 1px solid;
+    padding: 1rem;
+    border-color: #111827;
+    border-radius: 1.5rem;
+}
+.search-form {
+    width: 40%;
+}
+
+.search-input {
+    border-radius: 2rem !important;
+    padding-left: 1rem !important;
+      width: 240px;
+    height: 38px;
+}
+
+.search-btn{
+    background-color: #ff385c !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 999px !important;
+    height: 40px;
+    padding: 0 14px !important;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.search-btn i{
+    margin-right: 4px;
+    display: inline;
+}
+
+.search-btn:hover {
+    background-color: #e63946 !important;
+    color: white !important;
+}
+
+@media (max-width: 992px) {
+    .search-form {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
 }
