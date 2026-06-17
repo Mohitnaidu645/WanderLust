@@ -9,7 +9,7 @@ import { storage } from "../cloudConfig.js";
 const upload=multer({storage});
 
 //indexRoute
-router.get("/", wrapAsync(listingController.index));
+router.get("https://wanderlust-t27i.onrender.com/", wrapAsync(listingController.index));
 
 //createRoute 
 router.get("/new",isLoggedin,(req,res)=>{
