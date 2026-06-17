@@ -94,6 +94,11 @@ app.listen(port, () => {
   console.log(`server running on ${port}`);
 });
 
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
+
 app.use("/listings",listingsRoutes);
 app.use("/listings",reviewsRoutes);
 app.use("/",userRoutes);
