@@ -1,74 +1,84 @@
 <% layout("/layouts/boilerplate") %>
-<body>
-      <div id="filter">
-        <div class="filters">
-          <i class="fa-solid fa-fire"></i>
-          <p>Trending</p>
-        </div><div class="filters">
-          <a href="/listings/category/critic" class="filters">
-          <i class="fa-solid fa-snowflake"></i>
-          <p>Critic</p>
-          </a>
-        </div><div class="filters">
-          <a href="/listings/category/farm" class="filters">
-          <i class="fa-solid fa-cow"></i>
-          <p>Farm</p>
-          </a>
-        </div><div class="filters">
-          <a href="/listings/category/mountain" class="filters">
-          <i class="fa-solid fa-mountain"></i>
-          <p>Mountains</p>
-          </a>
-        </div><div class="filters">
-          <a href="/listings/category/city" class="filters">
-          <i class="fa-solid fa-city"></i>
-          <p>City</p>
-          </a>
-        </div><div class="filters">
-          <a href="/listings/category/uniquecity" class="filters">
-          <i class="fa-solid fa-mountain-city"></i>
-          <p>UniqueCity</p>
-          </a>
-        </div><div class="filters">
-          <a href="/listings/category/summer" class="filters">
-          <i class="fa-solid fa-sun-plant-wilt"></i>
-          <p>Summer</p>
-          </a>
-      </div>
-     <div class="tax-toggle"> <div class="form-check form-switch">
-        <label class="form-check-label" for="switchCheckDefault">Display total before taxes</label>
-  <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
 
-</div></div>
-   <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1">
-     <% for( let listing of allListings) { %>
-      <a href="/listings/<%= listing._id %>" class="listing-link">
-        <div class="card">
-     <img src="<%= listing.image.url %>" class="card-img-top" alt="..." style="height: 20rem;">
-     <div class="card-img-overlay"></div>
-   <div class="card-body">
-        <p class="card-text">
-        <b><%= listing.title %></b><br>
-        ₹ <%= listing.price.toLocaleString("en-IN") %> /night <i class="tax-info">+18% GST</i>
-        </p>
-    </div>
-    </div>
-      </a>
-    <% } %>
+<div id="filter">
+  <div class="filters">
+    <i class="fa-solid fa-fire"></i>
+    <p>Trending</p>
   </div>
-    <br>
-    <script>
-      let taxSwitch=document.getElementById("switchCheckDefault");
-      taxSwitch.addEventListener("click",()=>{
-        let taxInfo=document.getElementsByClassName("tax-info");
-        for(info of taxInfo){
-          if(info.style.display!="inline"){
-            info.style.display="inline";
-          }else{
-            info.style.display="none";
-          }
-        };
-      });
-    </script>
-</body>
+  <div class="filters">
+    <a href="/listings/category/critic" class="filters">
+      <i class="fa-solid fa-snowflake"></i>
+      <p>Critic</p>
+    </a>
+  </div>
+  <div class="filters">
+    <a href="/listings/category/farm" class="filters">
+      <i class="fa-solid fa-cow"></i>
+      <p>Farm</p>
+    </a>
+  </div>
+  <div class="filters">
+    <a href="/listings/category/mountain" class="filters">
+      <i class="fa-solid fa-mountain"></i>
+      <p>Mountains</p>
+    </a>
+  </div>
+  <div class="filters">
+    <a href="/listings/category/city" class="filters">
+      <i class="fa-solid fa-city"></i>
+      <p>City</p>
+    </a>
+  </div>
+  <div class="filters">
+    <a href="/listings/category/uniquecity" class="filters">
+      <i class="fa-solid fa-mountain-city"></i>
+      <p>UniqueCity</p>
+    </a>
+  </div>
+  <div class="filters">
+    <a href="/listings/category/summer" class="filters">
+      <i class="fa-solid fa-sun-plant-wilt"></i>
+      <p>Summer</p>
+    </a>
+  </div>
 
+  <div class="tax-toggle">
+    <div class="form-check form-switch">
+      <label class="form-check-label" for="switchCheckDefault">Display total before taxes</label>
+      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+    </div>
+  </div>
+</div>
+
+<!-- FIXED CARD GRID -->
+<div class="row">
+  <% for(let listing of allListings) { %>
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+      <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card h-95">
+          <img src="<%= listing.image.url %>" class="card-img-top" alt="<%= listing.title %>">
+          <div class="card-img-overlay"></div>
+          <div class="card-body">
+            <p class="card-text">
+              <b><%= listing.title %></b><br>
+              ₹ <%= listing.price.toLocaleString("en-IN") %> /night 
+              <i class="tax-info">+18% GST</i>
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% } %>
+</div>
+
+<br>
+
+<script>
+  let taxSwitch = document.getElementById("switchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (let info of taxInfo) {
+      info.style.display = (info.style.display !== "inline") ? "inline" : "none";
+    }
+  });
+</script>
